@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hw5-deploy
+  namespace: homework
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hw5
+  template:
+    metadata:
+      labels:
+        app: hw5
+    spec:
+      containers:
+        - name: hw5
+          imagePullPolicy: Always
+          image: tardis5159/helm-task:latest
+          ports:
+            - name: web
+              containerPort: 8000
